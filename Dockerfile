@@ -3,7 +3,7 @@ FROM ghcr.io/linuxserver/baseimage-kasmvnc:alpine320
 ARG FMD2_VERSION="2.0.32.0"
 
 LABEL \
-  maintainer="vhvictorhang@gmail.com"
+  maintainer="mail@elry.moe"
 
 ENV \
   WINEDLLOVERRIDES="mscoree,mshtml=" \
