@@ -725,7 +725,7 @@
       <desktop>2</desktop>
     </application>
     <application class="*">
-      <decor>no</decor>
+      <decor>yes</decor>
       <maximized>yes</maximized>
     </application>
     <!--

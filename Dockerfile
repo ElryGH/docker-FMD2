@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:ubuntunoble
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:alpine320
 
 ARG FMD2_VERSION="2.0.32.0"
 
@@ -7,22 +7,36 @@ LABEL \
 
 ENV \
   WINEDLLOVERRIDES="mscoree,mshtml=" \
+  WINEDEBUG="-all" \
   HOME=/config
+  
+COPY repositories /etc/apk/repositories
+COPY resolv.conf /etc/resolv.conf
 
-RUN \
-  apt update && \
-  apt install -y dpkg && \
-  dpkg --add-architecture i386 && \
-  apt install -y wine64=9.0~repack-4build3 wget p7zip-full curl git python3-pyxdg inotify-tools rsync &&\
-  curl -s https://api.github.com/repos/dazedcat19/FMD2/releases/tags/${FMD2_VERSION} | grep "browser_download_url.*download.*fmd.*x86_64.*.7z" | cut -d : -f 2,3 | tr -d '"' | wget -qi - -O FMD2.7z && \
-  7z x FMD2.7z -o/app/FMD2 && \
-  rm FMD2.7z && \
-  apt autoremove -y p7zip-full wget curl --purge && \
-  mkdir /downloads && \
-  mkdir -p /app/FMD2/userdata && \
-  mkdir -p /app/FMD2/downloads
+# Install required packages
+RUN apk update && \
+    apk add --no-cache \
+      bash \
+      curl \
+      git \
+      inotify-tools \
+      p7zip \
+      jq \
+      python3 \
+      rsync \
+      wine
 
-# Copy my settings preset
+# Download and extract FMD2
+RUN curl -s https://api.github.com/repos/dazedcat19/FMD2/releases/tags/${FMD2_VERSION} | \
+    jq -r '.assets[] | select(.name | contains("x86_64-win64")).browser_download_url' > download_url.txt && \
+    curl -L -o FMD2.7z $(cat download_url.txt) && \
+    7z x FMD2.7z -o/app/FMD2 && \
+    rm FMD2.7z && \
+    mkdir -p /downloads && \
+    mkdir -p /app/FMD2/userdata && \
+    mkdir -p /app/FMD2/downloads
+
+# Copy settings preset
 COPY settings.json root /
 
 VOLUME /config
