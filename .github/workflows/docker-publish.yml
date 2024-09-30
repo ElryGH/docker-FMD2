@@ -5,6 +5,7 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  workflow_dispatch: # Allows manual trigger from the GitHub UI
 
 jobs:
   build:
@@ -21,11 +22,16 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build the Docker image
+        id: build
         run: |
           docker build . --file Dockerfile --tag elrydocker/fmd2:latest
-          docker tag elrydocker/fmd2:latest elrydocker/fmd2:$(date +%s)
+          # Tag with timestamp for versioning
+          TIMESTAMP=$(date +%s)
+          docker tag elrydocker/fmd2:latest elrydocker/fmd2:$TIMESTAMP
+          echo "timestamp=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Push the Docker image
         run: |
           docker push elrydocker/fmd2:latest
-          docker push elrydocker/fmd2:$(date +%s)
+          # Push the timestamped tag
+          docker push elrydocker/fmd2:${{ env.timestamp }}
