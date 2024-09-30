@@ -15,9 +15,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
-      - UMASK=022 #optional
+      - UMASK=022
+      #Time between checks for downloaded files.
       - THRESHOLD_MINUTES=5
-      - TRANSFER_FILE_TYPE=.cbz
+      #If you want to download a different Format (zip or pdf), change that here too.
+      - TRANSFER_FILE_TYPE=.cbz 
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
