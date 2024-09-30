@@ -2,9 +2,7 @@
 
 A Dockerized FMD2 (Apline Linux with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
 
-[![Docker Image](https://img.shields.io/badge/docker%20image-elrydocker%2Ffmd2-blue?style=flat-square)](https://hub.docker.com/repository/docker/elrydocker/fmd2/general)
-
-For people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh), you can just replace the image path and it should keep your favorites, downloads & settings.
+For people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh), </br> you can just replace the image path and it should keep your favorites, downloads & settings.
 
 ## Docker Compose
 ```yaml
