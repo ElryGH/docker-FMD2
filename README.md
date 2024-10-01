@@ -4,7 +4,7 @@ A Dockerized FMD2 (Apline Linux with Wine) using VNC, noVNC and webSocketify to 
 
 How to for people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh):
 
-Shut down your current Container, back up your settings, replace the imagepath and start it back up with </br> `--force-recreate`
+Shut down your current Container, back up your settings, replace the imagepath and start it back up with `--force-recreate`
 
 ## Warning
 Do not change the Download path inside FMD2, we have a script to move files to the output volume.
