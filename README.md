@@ -2,7 +2,12 @@
 
 A Dockerized FMD2 (Apline Linux with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
 
-For people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh), </br> you can just replace the image path and it should keep your favorites, downloads & settings.
+How to for people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh):
+
+Shut down your current Container, back up your settings, replace the imagepath and start it back up with </br> `--force-recreate`
+
+## Warning
+Do not change the Download path inside FMD2, we have a script to move files to the output volume.
 
 ## Docker Compose
 ```yaml
@@ -23,8 +28,8 @@ services:
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
-      - ./fmd2/userdata:/app/FMD2/userdata
-      - ./manga-downloads:/downloads
+      - ./fmd2:/app/FMD2/userdata
+      - ./downloads:/downloads
     restart: unless-stopped
 ```
 ## Credits
