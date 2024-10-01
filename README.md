@@ -2,12 +2,12 @@
 
 A Dockerized FMD2 (Apline Linux with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
 
-How to for people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh):
+How to, for people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh):
 
-Shut down your current Container, back up your settings, replace the imagepath and start it back up with `--force-recreate`
+Shut down your current Container, back up your settings, replace the compose stuff and start the container up with `--force-recreate`
 
 ## Warning
-Do not change the Download path inside FMD2, we have a script to move files to the output volume.
+Do not change the Download path inside FMD2, we have a script to move files from wine to the output volume. (Due to wine issues)
 
 ## Docker Compose
 ```yaml
