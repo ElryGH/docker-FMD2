@@ -4,7 +4,7 @@ A Dockerized FMD2 (Arch Linux with Wine) using VNC, noVNC and webSocketify to di
 
 ### For people coming from the original Repo
 
-Its Shut down your current Container, back up your settings, replace / change the compose info ! </br>
+Shut down your current Container, back up your settings, replace / change the compose info ! </br>
 Then start the container back up with `--force-recreate`
 
 ## Warning
