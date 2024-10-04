@@ -10,12 +10,21 @@ ENV \
   WINEDEBUG="-all" \
   HOME=/config
   
-
 RUN \
   pacman -Syu --noconfirm && \
-  pacman -Sy --noconfirm git curl wget make && \
+  pacman -Sy --noconfirm git curl wget make sudo && \
+  useradd -m -U builder && \
+  echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  
+USER builder
+
+RUN \
   git clone https://aur.archlinux.org/yay.git /opt/yay && \
-  cd /opt/yay && makepkg -si --noconfirm && \
+  cd /opt/yay && makepkg -si --noconfirm
+  
+USER root
+
+RUN \
   yay -Sy --noconfirm wine wine-mono wine-gecko p7zip python-pyxdg inotify-tools rsync && \
   curl -s https://api.github.com/repos/dazedcat19/FMD2/releases/tags/${FMD2_VERSION} | grep "browser_download_url.*download.*fmd.*x86_64.*.7z" | cut -d : -f 2,3 | tr -d '"' | wget -qi - -O FMD2.7z && \
   7z x FMD2.7z -o/app/FMD2 && \
