@@ -13,10 +13,9 @@ ENV \
 
 RUN \
   pacman -Syu --noconfirm && \
-  pacman -S --noconfirm wine wget p7zip curl git python-pyxdg inotify-tools rsync && \
   git clone https://aur.archlinux.org/yay.git /opt/yay && \
   cd /opt/yay && makepkg -si --noconfirm && \
-  yay -S --noconfirm wine-mono wine-gecko && \
+  yay -Sy --noconfirm wine wget p7zip curl git python-pyxdg inotify-tools rsync wine-mono wine-gecko && \
   curl -s https://api.github.com/repos/dazedcat19/FMD2/releases/tags/${FMD2_VERSION} | grep "browser_download_url.*download.*fmd.*x86_64.*.7z" | cut -d : -f 2,3 | tr -d '"' | wget -qi - -O FMD2.7z && \
   7z x FMD2.7z -o/app/FMD2 && \
   rm FMD2.7z && \
