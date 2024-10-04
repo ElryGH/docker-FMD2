@@ -1,6 +1,6 @@
 ## Description
 
-A Dockerized FMD2 (Apline Linux with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
+A Dockerized FMD2 (Arch Linux with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
 
 How to, for people coming from the original Repo by [Banh-Canh](https://github.com/Banh-Canh):
 
@@ -39,7 +39,7 @@ Originally created and maintained by [Banh-Canh](https://github.com/Banh-Canh)
 * Does not require any display, works headless
 * Keeps all of FMD2 features
 * Since it's docker, it works on Linux
-* Make use of the fast Linuxserver alpine image
+* Make use of the fast Linuxserver arch image
 * Open for suggestions
 
 ## License
