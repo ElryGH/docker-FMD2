@@ -7,5 +7,5 @@ mkdir -p /tmp/.X11-unix
 sudo chmod 1777 /tmp/.X11-unix -R
 sudo chown abc:abc /app -R
 sudo chown abc:abc /config -R
-sudo chown abc:abc /downloads -R
+sudo find /downloads -type d -exec chown abc:abc {} \;
 sudo chmod +x /usr/local/bin/sync_dir
