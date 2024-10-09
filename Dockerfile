@@ -42,9 +42,8 @@ RUN \
   rm FMD2.7z && \
   mkdir /downloads && \
   mkdir -p /app/FMD2/userdata && \
-  mkdir -p /app/FMD2/downloads && \
+  mkdir -p /app/FMD2/downloads
   
-# Copy my settings preset
 COPY settings.json root /
 
 RUN if [ ! -f '/app/FMD2/userdata/settings.json' ]; then cp /settings.json /app/FMD2/userdata/settings.json; fi && \
