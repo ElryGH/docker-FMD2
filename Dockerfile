@@ -15,7 +15,8 @@ USER root
 RUN \
   echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
   pacman -Syu --noconfirm && \
-  pacman -Sy --noconfirm git curl wget make sudo
+  pacman -Sy --noconfirm git curl wget make sudo && \
+  adduser abc sudo
   
 USER abc
 
@@ -41,15 +42,10 @@ RUN \
   rm FMD2.7z && \
   mkdir /downloads && \
   mkdir -p /app/FMD2/userdata && \
-  mkdir -p /app/FMD2/downloads && \
-  chown abc:abc /app -R && \
-  chown abc:abc /config -R && \
-  chown abc:abc /downloads -R
+  mkdir -p /app/FMD2/downloads
   
 # Copy my settings preset
 COPY settings.json root /
-
-RUN chmod +x /usr/local/bin/sync_dir
 
 VOLUME /config
 EXPOSE 3000
