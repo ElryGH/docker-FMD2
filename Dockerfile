@@ -42,7 +42,11 @@ RUN \
   rm FMD2.7z && \
   mkdir /downloads && \
   mkdir -p /app/FMD2/userdata && \
-  mkdir -p /app/FMD2/downloads
+  mkdir -p /app/FMD2/downloads && \
+  sudo chown abc:abc /app -R && \
+  sudo chown abc:abc /config -R && \
+  sudo chown abc:abc /downloads -R && \
+  sudo chmod +x /usr/local/bin/sync_dir
   
 # Copy my settings preset
 COPY settings.json root /
