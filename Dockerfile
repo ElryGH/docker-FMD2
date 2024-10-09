@@ -16,7 +16,7 @@ RUN \
   echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
   pacman -Syu --noconfirm && \
   pacman -Sy --noconfirm git curl wget make sudo && \
-  adduser abc sudo
+  usermod -aG sudo abc
   
 USER abc
 
