@@ -43,13 +43,20 @@ RUN \
   mkdir /downloads && \
   mkdir -p /app/FMD2/userdata && \
   mkdir -p /app/FMD2/downloads && \
+  
+# Copy my settings preset
+COPY settings.json root /
+
+RUN if [ ! -f '/app/FMD2/userdata/settings.json' ]; then cp /settings.json /app/FMD2/userdata/settings.json; fi && \
+  mkdir -p /app/FMD2/src && \
+  git clone --single-branch --depth=1 https://github.com/dazedcat19/FMD2.git /app/FMD2/src && \
+  cp /app/FMD2/src/lua /app/FMD2 -R && \
+  mkdir -p /tmp/.X11-unix && \
+  sudo chmod 1777 /tmp/.X11-unix -R && \
   sudo chown abc:abc /app -R && \
   sudo chown abc:abc /config -R && \
   sudo chown abc:abc /downloads -R && \
   sudo chmod +x /usr/local/bin/sync_dir
-  
-# Copy my settings preset
-COPY settings.json root /
 
 VOLUME /config
 EXPOSE 3000
