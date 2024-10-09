@@ -41,10 +41,15 @@ RUN \
   rm FMD2.7z && \
   mkdir /downloads && \
   mkdir -p /app/FMD2/userdata && \
-  mkdir -p /app/FMD2/downloads
+  mkdir -p /app/FMD2/downloads && \
+  chown abc:abc /app -R && \
+  chown abc:abc /config -R && \
+  chown abc:abc /downloads -R
   
 # Copy my settings preset
 COPY settings.json root /
+
+RUN chmod +x /usr/local/bin/sync_dir
 
 VOLUME /config
 EXPOSE 3000
