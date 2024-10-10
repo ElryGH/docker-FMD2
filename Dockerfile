@@ -1,6 +1,6 @@
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:arch
 
-ARG FMD2_VERSION="2.0.33.0"
+ARG FMD2_VERSION="2.0.33.1"
 
 LABEL \
   maintainer="mail@elry.moe"
