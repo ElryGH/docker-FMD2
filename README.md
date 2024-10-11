@@ -1,11 +1,14 @@
+# Deprecation (Archive) Warning
+
+I, along with many others, [had](https://github.com/Banh-Canh/docker-FMD2/issues/22) & [have](https://github.com/ElryGH/docker-FMD2/issues/5) ongoing permission issues and 0Kbps speeds with the Dockerized version (all thanks to WINE).  
+Banh finally had enough and passed the repository to me. I made every attempt to fix these WINE-related issues, but it didn't work out...  
+As of today, I am officially giving up on this unfortunate, seemingly unfixable mess that is WINE on Docker and archiving this project.  
+I'll be moving to a Windows Nano VPS, where everything runs without any of these problems.</br>
+I'm sorry I couldn't fix it, <ins>but WINE had other plans</ins>.
+
 ## Description
 
-A Dockerized FMD2 (Arch Linux with Wine) using VNC, noVNC and webSocketify to display GUI on a webpage.
-
-### For people coming from the original Repo
-
-Shut down your current Container, back up your settings, replace / change the compose info ! </br>
-Then start the container back up with `--force-recreate`
+A (slightly faster) Dockerized FMD2 (Arch Linux) using VNC, noVNC and webSocketify to display GUI on a webpage.
 
 ## Warning
 Do not change the Download path inside FMD2, we have a script to move files from wine to the output volume. (Due to wine issues)
