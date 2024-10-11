@@ -2,7 +2,7 @@
 
 I & many others, [had](https://github.com/Banh-Canh/docker-FMD2/issues/22) & [have](https://github.com/ElryGH/docker-FMD2/issues/5) permission issues and 0Kbps speeds with the Docker version (all thanks to WINE).  
 Banh had enough and gave the repo to me. I made multiple attempts to fix these issues, but it didn't work out...  
-As of today, I am officially giving up on this seemingly unfixable mess that is WINE on Docker and archiving this project.  
+As of today, I am officially giving up on this seemingly unfixable mess that is WINE on Docker and archiving this.  
 I'll be moving to a Windows Nano VPS, where everything runs without any of these problems.</br>
 I'm sorry I couldn't fix it, <ins>but WINE had other plans</ins>.
 
