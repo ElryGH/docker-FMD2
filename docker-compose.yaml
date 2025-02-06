@@ -12,6 +12,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./fmd:/app/FMD2/userdata
+      - ./fmd/userdata:/app/FMD2/userdata
+      - ./fmd/data:/app/FMD2/data
       - ./manga:/downloads
     restart: unless-stopped
