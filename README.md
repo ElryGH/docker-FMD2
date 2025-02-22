@@ -23,14 +23,15 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
+      - TZ=Europe/Berlin
       - UMASK=022
       - THRESHOLD_MINUTES=3
       - TRANSFER_FILE_TYPE=.cbz
     ports:
       - 3000:3000
     volumes:
-      - ./fmd2:/app/FMD2/userdata
+      - ./fmd/userdata:/app/FMD2/userdata
+      - ./fmd/data:/app/FMD2/data
       - ./manga:/downloads
     restart: unless-stopped
 ```
